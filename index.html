@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuinTools — Tools, built with intent</title>
+  <meta name="description" content="A home for the tools I build — from game helpers to security projects. Practical, sharp, and always evolving." />
+  <meta name="theme-color" content="#08090d" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="QuinTools" />
+  <meta property="og:description" content="A home for the tools I build — from game helpers to security projects." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon: inline SVG, no external files -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237c5cff'/><text x='50' y='72' font-size='64' font-family='Arial' font-weight='bold' text-anchor='middle' fill='white'>Q</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top">
+        <span class="logo"></span>
+        QuinTools
+      </a>
+      <nav class="header-links">
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/fyxtro" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <span class="pill"><span class="dot"></span> Independent projects &amp; experiments</span>
+      <h1>Tools, built with <span class="grad">intent.</span></h1>
+      <p>
+        A single home for everything I build — from game-changing helpers to
+        hands-on security projects. Each one starts as a problem worth solving.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#tools">Browse the tools</a>
+        <a class="btn btn-ghost" href="https://github.com/fyxtro" target="_blank" rel="noopener">View GitHub</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="num" id="stat-total">0</div><div class="label">Projects</div></div>
+        <div class="stat"><div class="num" id="stat-live">0</div><div class="label">Live now</div></div>
+        <div class="stat"><div class="num" id="stat-cats">0</div><div class="label">Categories</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Tools ===== -->
+  <section class="tools-section" id="tools">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>The toolbox</h2>
+          <p>Everything I'm building, in one place. Filter or search to find what you need.</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label class="search">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="search-input" type="text" placeholder="Search tools…" autocomplete="off" />
+        </label>
+        <div class="filters" id="filters"></div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section class="tools-section" id="about" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>About</h2>
+          <p style="max-width:640px">
+            QuinTools is my personal workshop. I build practical tools to scratch my own
+            itches — some for games, some for security research, some just for fun.
+            Everything here is made and maintained by me, and the list keeps growing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> QuinTools. Built by Quinten.</span>
+      <a href="https://github.com/fyxtro" target="_blank" rel="noopener">github.com/fyxtro</a>
+    </div>
+  </footer>
+
+  <script src="projects.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
