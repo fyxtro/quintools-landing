@@ -334,6 +334,11 @@ a { color: inherit; text-decoration: none; }
 }
 .icon-btn:hover { color: var(--text); border-color: var(--border-2); background: rgba(255,255,255,0.06); }
 
+/* ---------------- About ---------------- */
+.about { max-width: 640px; }
+.about p { color: var(--muted); margin: 0 0 16px; }
+.about-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+
 .empty {
   text-align: center; padding: 70px 20px; color: var(--faint);
   border: 1px dashed var(--border); border-radius: var(--radius);
