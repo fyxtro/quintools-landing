@@ -27,15 +27,15 @@
 
 const PROJECTS = [
   {
-    title: "GTA V Money Helper",
+    title: "GTA V Daily Grind",
     description:
-      "A companion that maps out the most efficient money-making routes in GTA Online — heists, cargo cycles, and daily payouts ranked by $/hour so you never grind blind.",
+      "A GTA Online companion: a daily checklist in the order that pays, a session planner, and money calculators (buy-next, sell-timing, upgrade payback) so you never grind blind. Runs entirely in your browser.",
     category: "GTA V",
-    status: "wip",
-    url: "",
+    status: "live",
+    url: "/gta/",
     repo: "",
     icon: "💰",
-    tags: ["Web", "Optimizer", "Guide"],
+    tags: ["Web", "Checklist", "Calculators"],
     featured: true,
   },
   {
