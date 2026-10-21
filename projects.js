@@ -27,6 +27,18 @@
 
 const PROJECTS = [
   {
+    title: "Game Launcher for Steam",
+    description:
+      "A free Stream Deck plugin: one key fills your whole deck with your Steam favorites, installed or recently played games. Press a game to launch it.",
+    category: "Stream Deck",
+    status: "live",
+    url: "game-launcher/",
+    repo: "https://github.com/fyxtro/game-launcher-for-steam",
+    icon: "🎛️",
+    tags: ["Stream Deck", "Plugin", "TypeScript"],
+    featured: false,
+  },
+  {
     title: "GTA V Daily Grind",
     description:
       "A GTA Online companion: a daily checklist in the order that pays, a session planner, and money calculators (buy-next, sell-timing, upgrade payback) so you never grind blind. Runs entirely in your browser.",
@@ -70,5 +82,6 @@ const PROJECTS = [
 const CATEGORIES = {
   "GTA V":     { color: "#f5a623", icon: "🎮" },
   "Security":  { color: "#3ddc97", icon: "🔒" },
+  "Stream Deck": { color: "#38bdf8", icon: "🎛️" },
   // "Web Apps": { color: "#7aa2ff", icon: "🌐" },
 };
