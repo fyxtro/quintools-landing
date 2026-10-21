@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Launcher for Steam · Stream Deck plugin · QuinTools</title>
+  <meta name="description" content="A free Stream Deck plugin: one key fills your deck with your Steam favorites, installed or recently played games. Press a game to launch it." />
+  <meta name="theme-color" content="#08090d" />
+
+  <meta property="og:title" content="Game Launcher for Steam" />
+  <meta property="og:description" content="One key fills your Stream Deck with your Steam games. Press a game to launch it." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/thumbnail.webp" />
+
+  <link rel="icon" type="image/svg+xml" href="img/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    :root { --sd: #38bdf8; }
+    .crumb { font-size: .88rem; color: var(--muted); }
+    .crumb a:hover { color: var(--text); }
+
+    .gl-hero { padding-top: 72px; padding-bottom: 40px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+    .gl-hero .logo-img { width: 76px; height: 76px; border-radius: 18px; box-shadow: var(--shadow); margin-bottom: 26px; }
+    .gl-hero h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.04; letter-spacing: -.035em; margin: 0 0 6px; font-weight: 800; }
+    .gl-hero .for { display: block; font-size: .6em; color: var(--muted); font-weight: 700; letter-spacing: -.02em; }
+    .gl-hero p.lead { color: var(--muted); font-size: 1.12rem; margin: 18px 0 30px; max-width: 520px; }
+    .gl-hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .gl-hero .note { margin-top: 16px; font-size: .85rem; color: var(--faint); }
+    .shot { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    @media (max-width: 880px) { .gl-hero { grid-template-columns: 1fr; gap: 36px; padding-top: 40px; } }
+
+    .section { padding: 56px 0; }
+    .section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.02em; margin: 0 0 10px; }
+    .section > .wrap > p.sub { color: var(--muted); margin: 0 0 32px; max-width: 640px; }
+
+    .features { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+    .feature { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+    .feature .fi { width: 38px; height: 38px; border-radius: 11px; background: var(--grad); display: grid; place-items: center; margin-bottom: 14px; }
+    .feature h3 { margin: 0 0 6px; font-size: 1.04rem; }
+    .feature p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+    .gallery { display: grid; gap: 22px; }
+    .gallery figure { margin: 0; }
+    .gallery figcaption { color: var(--faint); font-size: .88rem; margin-top: 10px; }
+
+    .steps { counter-reset: s; display: grid; gap: 14px; max-width: 760px; padding: 0; margin: 0; list-style: none; }
+    .steps li { counter-increment: s; position: relative; padding: 18px 20px 18px 66px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); color: var(--muted); }
+    .steps li::before { content: counter(s); position: absolute; left: 20px; top: 16px; width: 30px; height: 30px; border-radius: 9px; background: var(--grad); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: .9rem; }
+    .steps li strong { color: var(--text); }
+    code, kbd { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .86em; background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; color: var(--text); }
+
+    .faq { max-width: 760px; display: grid; gap: 12px; }
+    .faq details { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; }
+    .faq summary { cursor: pointer; font-weight: 600; }
+    .faq details p { color: var(--muted); margin: 10px 0 0; }
+
+    .req { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .req span { font-size: .84rem; color: var(--muted); border: 1px solid var(--border-2); border-radius: 999px; padding: 6px 12px; background: var(--surface); }
+    .legal { color: var(--faint); font-size: .84rem; padding-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="logo"></span>
+        QuinTools
+      </a>
+      <nav class="header-links">
+        <a href="#features">Features</a>
+        <a href="#install">Install</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/fyxtro/game-launcher-for-steam" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap gl-hero">
+      <div>
+        <div class="crumb"><a href="../">QuinTools</a> / Stream Deck</div>
+        <img class="logo-img" src="img/logo.png" alt="" width="76" height="76" style="margin-top:22px" />
+        <h1>Game Launcher <span class="for">for Steam</span></h1>
+        <p class="lead">A free Stream Deck plugin. One key fills your whole deck with your Steam favorites, installed or recently played games. Press a game to launch it.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/fyxtro/game-launcher-for-steam/releases/latest/download/tools.quin.steamlibrary.streamDeckPlugin">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
+            Download for Stream Deck
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/fyxtro/game-launcher-for-steam" target="_blank" rel="noopener">Source on GitHub</a>
+        </div>
+        <div class="req"><span>Windows 10 / 11</span><span>Stream Deck 7.1+</span><span>Steam</span><span>Free &amp; open source</span></div>
+        <p class="note">Coming to the Elgato Marketplace soon.</p>
+      </div>
+      <img class="shot" src="img/deck.webp" alt="Stream Deck filled with game tiles, plus back, previous, filter and next keys" width="940" height="620" />
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <h2>What it does</h2>
+        <p class="sub">Like Elgato's own audio mixer: press one key and your deck turns into your game library. Everything is read locally from Steam.</p>
+        <div class="features">
+          <div class="feature"><div class="fi">▦</div><h3>One key, whole deck</h3><p>Opens a bundled profile that fills itself with your games and artwork.</p></div>
+          <div class="feature"><div class="fi">★</div><h3>Four views</h3><p>Favorites, Installed, Recently played or All. Tap the filter key to switch.</p></div>
+          <div class="feature"><div class="fi">⧉</div><h3>Your collections</h3><p>Use Steam Favorites or any collection you made yourself, like Shooters or Co-op.</p></div>
+          <div class="feature"><div class="fi">⛁</div><h3>Every library drive</h3><p>Games on C:, D: or an external drive all show up automatically.</p></div>
+          <div class="feature"><div class="fi">↩</div><h3>Back after launch</h3><p>The deck returns to your previous profile once a game starts. Optional.</p></div>
+          <div class="feature"><div class="fi">⤓</div><h3>Not installed?</h3><p>Favorites you have not installed show in grey. Press one to install it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap gallery">
+        <figure><img class="shot" src="img/gallery-1-one-key.webp" alt="A normal profile with the Open Game Launcher key, and the filled game grid it opens" loading="lazy" width="1920" height="960" /></figure>
+        <figure><img class="shot" src="img/gallery-2-filters.webp" alt="Filter key states: Favorites, Installed, Recent and All" loading="lazy" width="1920" height="960" /></figure>
+        <figure><img class="shot" src="img/gallery-3-settings.webp" alt="The plugin settings panel in the Stream Deck app" loading="lazy" width="1920" height="960" /></figure>
+      </div>
+    </section>
+
+    <section class="section" id="install">
+      <div class="wrap">
+        <h2>Install</h2>
+        <p class="sub">Takes about a minute.</p>
+        <ol class="steps">
+          <li><strong>Download</strong> the plugin file above and double-click it. The Stream Deck app installs it.</li>
+          <li><strong>Drag "Open Game Launcher"</strong> from the <em>Game Launcher for Steam</em> category onto any key.</li>
+          <li><strong>Press it.</strong> The first time, Stream Deck asks to install the included profile: choose yes.</li>
+          <li><strong>Pick a game.</strong> Use the filter key to switch views and the arrows to page through your library.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <h2>FAQ</h2>
+        <div class="faq">
+          <details><summary>Do I need a Steam API key or to log in?</summary><p>No. The plugin reads your installed games, playtime order and collections from your own Steam folder. Only for favorites that are not installed does it ask the public Steam Store for the name and artwork.</p></details>
+          <details><summary>Which Stream Decks are supported?</summary><p>The bundled profile exists for Stream Deck (15 keys), Stream Deck Mini and Stream Deck XL. On other devices you can place the Game Slot, Previous, Next and Filter actions yourself; slots fill left to right, top to bottom.</p></details>
+          <details><summary>A new favorite or game does not show up.</summary><p>Steam sometimes saves collections a little later. Hold the filter key for a second to rescan, or use "Rescan Steam" in the settings.</p></details>
+          <details><summary>Steam is installed in an unusual place.</summary><p>Select the filter key in the Stream Deck app and fill in the Steam folder, for example <code>D:\Steam</code>.</p></details>
+          <details><summary>Is it on macOS?</summary><p>Not yet. It is built and tested for Windows only.</p></details>
+          <details><summary>What data does it collect?</summary><p>None. No analytics or tracking. See the <a href="privacy/" style="text-decoration:underline">privacy policy</a>.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap legal">Not affiliated with or endorsed by Valve Corporation or Elgato. Steam is a trademark of Valve Corporation. Stream Deck is a trademark of Corsair Memory, Inc.</div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 QuinTools. Built by Quinten.</span>
+      <span><a href="privacy/">Privacy</a> · <a href="../">All tools</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>
